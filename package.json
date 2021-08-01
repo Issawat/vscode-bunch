@@ -1,6 +1,7 @@
 {
   "name": "bunch",
   "displayName": "bunch",
+  "publisher": "ActciaN",
   "description": "The git extension that will notify you about number of line changes on the git repository",
   "version": "0.0.1",
   "engines": {
