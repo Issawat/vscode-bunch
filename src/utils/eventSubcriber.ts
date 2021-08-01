@@ -6,7 +6,6 @@ export const eventSubscriber = (
 ) => {
   subscriptions.push(vscode.workspace.onDidSaveTextDocument(updater));
   subscriptions.push(vscode.workspace.onDidChangeConfiguration(updater));
-  subscriptions.push(vscode.workspace.onDidChangeTextDocument(updater));
   subscriptions.push(vscode.workspace.onDidChangeWorkspaceFolders(updater));
   subscriptions.push(vscode.workspace.onDidRenameFiles(updater));
   subscriptions.push(vscode.workspace.onDidCreateFiles(updater));

@@ -1,4 +1,4 @@
-import { virtualTerminal } from "../libs/virtualTerminal";
+import { virtualTerminal } from "./virtualTerminal";
 import * as vscode from "vscode";
 import { getStatNumber } from "./getStatNumber";
 import { Stats } from "../types/stats";
@@ -14,7 +14,7 @@ export const getNumberOfChanges = async (
   );
 
   const changes = result.split(",");
-  
+
   const deletions = getStatNumber(changes, "deletion");
   const insertions = getStatNumber(changes, "insertion");
   const files = getStatNumber(changes, "file");
