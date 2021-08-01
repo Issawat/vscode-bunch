@@ -1,4 +1,6 @@
 import * as vscode from "vscode";
+import { limitPrompt } from "./prompt";
+import { updateStatusBar } from "./statusBar";
 
 const settings = () => {
   vscode.commands.executeCommand("workbench.action.openSettings", "bunch");
@@ -18,6 +20,10 @@ const setTargetBranch = () => {
   );
 };
 
+const recheck = () => {
+  limitPrompt();
+};
+
 export const registerCommands = (context: vscode.ExtensionContext) => {
   context.subscriptions.push(
     vscode.commands.registerCommand("bunch.settings", settings)
@@ -27,5 +33,8 @@ export const registerCommands = (context: vscode.ExtensionContext) => {
   );
   context.subscriptions.push(
     vscode.commands.registerCommand("bunch.setTargetBranch", setTargetBranch)
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("bunch.recheck", recheck)
   );
 };

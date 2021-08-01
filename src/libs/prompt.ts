@@ -25,9 +25,9 @@ export const limitPrompt = async () => {
   if (totalExceed) {
     vscode.window
       .showWarningMessage(
-        `You've reached the total limit! (deletions + insertions = ${
+        `You've reached the total limit! (${
           deletions + insertions
-        })`,
+        } changes)`,
         ...options
       )
       .then(handleShowAddToWhitelist);

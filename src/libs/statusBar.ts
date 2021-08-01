@@ -27,7 +27,7 @@ export const activateStatusBar = async (context: vscode.ExtensionContext) => {
     1
   );
 
-  statusBarItem.command = "bunch.showStatusBar";
+  statusBarItem.command = "bunch.recheck";
   context.subscriptions.push(statusBarItem);
 
   const statusBarUpdater = updateStatusBar(statusBarItem);
