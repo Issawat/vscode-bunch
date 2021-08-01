@@ -1,61 +1,81 @@
 {
   "name": "bunch",
-	"displayName": "bunch",
-	"description": "The git extension that will notify you about number of line changes on the git repository",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.58.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onStartupFinished"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"configuration": {
-			"title": "Bunch",
-			"properties": {
-				"bunch.targetBranch": {
-					"type": "string",
-					"default": "main",
-					"description": "Target branch name to compare with the branch your are working on"
-				  }
-			}
-		},
-		"commands": [
-			{
-				"command": "bunch.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"test-compile": "tsc -p ./",
-		"test-watch": "tsc -watch -p ./",
-		"pretest": "yarn run test-compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.58.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.2.2",
-		"@types/node": "14.x",
-		"eslint": "^7.27.0",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
-		"glob": "^7.1.7",
-		"mocha": "^8.4.0",
-		"typescript": "^4.3.2",
-		"vscode-test": "^1.5.2",
-		"ts-loader": "^9.2.2",
-		"webpack": "^5.38.1",
-		"webpack-cli": "^4.7.0"
-	}
+  "displayName": "bunch",
+  "description": "The git extension that will notify you about number of line changes on the git repository",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.58.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Bunch",
+      "properties": {
+        "bunch.targetBranch": {
+          "type": "string",
+          "default": "main",
+          "description": "Target branch that will be compared with your working branch"
+        },
+        "bunch.insertionChangesLimit": {
+          "type": "number",
+          "default": 1000,
+          "description": "Maximum number of insertion lines. You will be notified when it reached the limit (0 is unlimited)"
+        },
+        "bunch.deletionChangesLimit": {
+          "type": "number",
+          "default": 1000,
+          "description": "Maximum number of deletion lines. You will be notified when it reached the limit (0 is unlimited)"
+        },
+        "bunch.maxTotalChanges": {
+          "type": "number",
+          "default": 1000,
+          "description": "Maximum total number of changes (deletions + insertions). You will be notified when it reached the limit (0 is unlimited)"
+        },
+		"bunch.whitelist": {
+			"type": "array",
+			"default": [],
+			"description": "Bypass the checks by adding branch names here"
+		  }
+      }
+    },
+    "commands": [
+      {
+        "command": "bunch.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "yarn run test-compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.58.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2",
+    "ts-loader": "^9.2.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
 }

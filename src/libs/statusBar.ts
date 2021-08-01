@@ -1,25 +1,36 @@
 import * as vscode from "vscode";
+import { eventSubscriber } from "../utils/eventSubcriber";
 import { getNumberOfChanges } from "../utils/getChanges";
+import { limitChecker } from "../utils/limitChecker";
 
-export const activateStatusBar = async ({
-  subscriptions,
-}: vscode.ExtensionContext) => {
+export const updateStatusBar =
+  (statusBar: vscode.StatusBarItem) => async () => {
+    const { deletions, insertions, files } = await getNumberOfChanges();
+    const { deletionsExceed, totalExceed, insertionExceed } =
+      await limitChecker();
+
+    if (deletionsExceed || totalExceed || insertionExceed) {
+      statusBar.backgroundColor = new vscode.ThemeColor(
+        "statusBarItem.errorBackground"
+      );
+    } else {
+      statusBar.backgroundColor = undefined;
+    }
+
+    statusBar.text = `Bunch! $(files) ${files}, $(add) ${insertions}, $(remove) ${deletions}`;
+    statusBar.show();
+  };
+
+export const activateStatusBar = async (context: vscode.ExtensionContext) => {
   const statusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Right,
     1
   );
+
   statusBarItem.command = "bunch.showStatusBar";
-  subscriptions.push(statusBarItem);
+  context.subscriptions.push(statusBarItem);
 
-  const statusBarUpdater = updateStatusBarItem(statusBarItem);
-  subscriptions.push(vscode.workspace.onDidSaveTextDocument(statusBarUpdater));
-
+  const statusBarUpdater = updateStatusBar(statusBarItem);
+  eventSubscriber(context, statusBarUpdater);
   statusBarUpdater();
-};
-
-const updateStatusBarItem = (statusBar: vscode.StatusBarItem) => async () => {
-  const changes = await getNumberOfChanges();
-  statusBar.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
-    statusBar.text = `$(files) ${changes?.files}, $(add) ${changes?.insertions}, $(remove) ${changes?.deletions}`;
-  statusBar.show();
 };

@@ -1,5 +1,5 @@
 export interface Stats {
-  insertions?: number | null;
-  deletions?: number | null;
-  files?: number | null;
+  insertions: number;
+  deletions: number;
+  files: number;
 }

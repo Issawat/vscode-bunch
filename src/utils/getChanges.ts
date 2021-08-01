@@ -5,7 +5,7 @@ import { Stats } from "../types/stats";
 
 export const getNumberOfChanges = async (
   baseBranch?: string
-): Promise<Stats | null> => {
+): Promise<Stats> => {
   const branchToCompare =
     baseBranch ?? vscode.workspace.getConfiguration("bunch").targetBranch;
 
@@ -13,18 +13,15 @@ export const getNumberOfChanges = async (
     `git --no-pager diff --shortstat ${branchToCompare}`
   );
 
-  if (result) {
-    const changes = result.split(",");
-    const deletions = getStatNumber(changes, "deletion");
-    const insertions = getStatNumber(changes, "insertion");
-    const files = getStatNumber(changes, "file");
-    
-    return {
-      deletions,
-      insertions,
-      files,
-    };
-  }
+  const changes = result.split(",");
+  
+  const deletions = getStatNumber(changes, "deletion");
+  const insertions = getStatNumber(changes, "insertion");
+  const files = getStatNumber(changes, "file");
 
-  return null;
+  return {
+    deletions,
+    insertions,
+    files,
+  };
 };
