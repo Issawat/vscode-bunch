@@ -46,8 +46,16 @@
     },
     "commands": [
       {
-        "command": "bunch.helloWorld",
-        "title": "Hello World"
+        "command": "bunch.settings",
+        "title": "Bunch: Settings"
+      },
+      {
+        "command": "bunch.addWhitelist",
+        "title": "Bunch: Add branch to whitelist"
+      },
+      {
+        "command": "bunch.setTargetBranch",
+        "title": "Bunch: Set target compare branch"
       }
     ]
   },
