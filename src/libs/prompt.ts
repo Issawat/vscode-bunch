@@ -4,7 +4,7 @@ import { getNumberOfChanges } from "../utils/getChanges";
 import { getCurrentBranch } from "../utils/getCurrentBranch";
 import { limitChecker } from "../utils/limitChecker";
 
-const options = ["I know what I'm doing, hide this", "I got it"];
+const options = ["I know what I'm doing, hide this now.", "I got it."];
 
 export const limitPrompt = async () => {
   const { deletions, insertions } = await getNumberOfChanges();
