@@ -16,7 +16,7 @@ Bunch will start to watch changes and warn you if the limit is reached right aft
 Open the command palette and type `Bunch: settings`
 
 ## Release Notes
-Beta 1 (0.1) - Initial release, First beta
+Beta 1 (0.0.1) - Initial release, First beta
 
 ## Special Thanks
 ---

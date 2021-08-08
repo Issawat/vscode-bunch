@@ -4,7 +4,7 @@
   "icon": "https://raw.githubusercontent.com/Issawat/vscode-bunch/main/logo.jpeg",
   "publisher": "Issawat",
   "description": "The git extension that will notify you about number of line changes on the git repository",
-  "version": "0.1",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.58.0"
   },
