@@ -1,7 +1,8 @@
 {
   "name": "bunch",
   "displayName": "bunch",
-  "icon": "https://raw.githubusercontent.com/Issawat/vscode-bunch/main/logo.jpeg",
+  "repository": "https://github.com/Issawat/vscode-bunch",
+  "icon": "logo.jpeg",
   "publisher": "Issawat",
   "description": "The git extension that will notify you about number of line changes on the git repository",
   "version": "0.0.1",
