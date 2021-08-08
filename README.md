@@ -1,7 +1,7 @@
 <img src="logo.jpeg" width="100"><br/>
 # Bunch!
 
-An extension for monitoring number of line changes for your git branch.
+The vscode extension for monitoring number of line changes for your git branch.
 ![Screenshot](screenshot.png)
 ## Installation
 ---
