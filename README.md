@@ -9,7 +9,7 @@ Just search for `Bunch!` on vscode extension tab and install it!
 
 ## How to use ?
 ---
-Bunch will start to watch changes and warn you if changes are over the limit right after vscode is started.
+Bunch will start to watch changes and warn you if the limit is reached right after vscode is started.
 
 ## How configure the limit and other settings ?
 ---
